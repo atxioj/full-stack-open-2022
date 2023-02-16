@@ -16,7 +16,7 @@ const DisplayCountryProfile = ({countriesSearchedByUser, index}) => {
       </div>
     )
   }
-  const CountryLine =({country, countryId, setCountryId, index, countriesSearchedByUser, setButtonState, buttonState, handleClick}) => {
+  const CountryLine =({country, index, countriesSearchedByUser, setButtonState, buttonState, handleClick}) => {
     useEffect( () => {
       setButtonState([])
     }, [setButtonState])
@@ -29,7 +29,6 @@ const DisplayCountryProfile = ({countriesSearchedByUser, index}) => {
 
 const DisplayCountries = ({countries, countrySearch}) => {
     const countriesSearchedByUser = countries.filter(country => country.name.common.toLowerCase().includes(countrySearch))
-    const [countryId, setCountryId] = useState(false)
     const [buttonState, setButtonState] = useState([])
 
     const handleClick = (i) => {
@@ -58,7 +57,7 @@ const DisplayCountries = ({countries, countrySearch}) => {
       return(
         <div>
           {countries.filter(country => country.name.common.toLowerCase().includes(countrySearch)).map((country, i) =>
-          <CountryLine buttonState={buttonState} setButtonState={setButtonState} handleClick={handleClick} countryId={countryId} key={i} index={i} setCountryId={setCountryId}country={country} countriesSearchedByUser={countriesSearchedByUser}/>  ) 
+          <CountryLine buttonState={buttonState} setButtonState={setButtonState} handleClick={handleClick} key={i} index={i} country={country} countriesSearchedByUser={countriesSearchedByUser}/>  ) 
           } {console.log(buttonState)}
         </div>  
       ) 
